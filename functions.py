@@ -1,5 +1,5 @@
 def calculateBMI(totalInches, totalPounds):
-    totalKg = float(totalPounds) * 0.45
+    totalKg = float(totalPounds) * 0.45 
     totalMeters = float(totalInches) * 0.025
 
     totalMetersSquared = totalMeters * totalMeters
@@ -16,3 +16,6 @@ def calculateWeightClass(BMI):
         return "Overweight"
     else: 
         return "Obese"
+    
+
+    
