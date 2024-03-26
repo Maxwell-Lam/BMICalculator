@@ -20,7 +20,7 @@ jobs:
           command: pip install -r requirements.txt        
       - run:
           name: Run tests
-          command: python -m pytest test.py && echo "Testing Starting Here"
+          command: python -m pytest tests.py && echo "Testing Starting Here"
 workflows:
   example:
     jobs:
