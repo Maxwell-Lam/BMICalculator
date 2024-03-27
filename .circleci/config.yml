@@ -1,10 +1,13 @@
 # Couldn't automatically generate a config from your source code.
 # This is a generic template to serve as a base for your custom config
+
 # See: https://circleci.com/docs/configuration-reference
+ 
 version: 2.1
 
 orbs:
   python: circleci/python@2.1.1
+  coveralls: coveralls/coveralls@2.2.1
 
 jobs:
   test:
@@ -17,10 +20,14 @@ jobs:
           pkg-manager: pip
       - run:
           name: Build Pytest
-          command: pip install -r requirements.txt        
+          command: |
+            pip install -r requirements.txt
+            coverage run --source=my_package -m pytest tests.py
+            COVERALLS_REPO_TOKEN="RE6TLjhyIVaXbapK0OAMllp8BwHOJJPOc" coveralls
+            
       - run:
           name: Run tests
-          command: python -m pytest tests.py && echo "Testing Starting Here"
+          command: python -m pytest test.py && echo "Testing Starting Here"
 workflows:
   example:
     jobs:
