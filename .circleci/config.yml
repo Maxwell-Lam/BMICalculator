@@ -22,8 +22,7 @@ jobs:
           name: Build Pytest
           command: |
             pip install -r requirements.txt
-            #coverage run --source=my_package -m pytest tests.py   
-            pytest --cov=tests.py
+            coverage run --source=my_package -m pytest tests.py  
             COVERALLS_REPO_TOKEN="RE6TLjhyIVaXbapK0OAMllp8BwHOJJPOc" coveralls
       - run:
           name: Run tests
