@@ -2,7 +2,7 @@
 # This is a generic template to serve as a base for your custom config
 
 # See: https://circleci.com/docs/configuration-reference
- 
+ https://github.com/Maxwell-Lam/BMICalculator/blob/main/.circleci/config.yml
 version: 2.1
 
 orbs:
@@ -22,8 +22,11 @@ jobs:
           name: Build Pytest
           command: |
             pip install -r requirements.txt
-            coverage run --source=my_package -m pytest tests.py  
-            COVERALLS_REPO_TOKEN="RE6TLjhyIVaXbapK0OAMllp8BwHOJJPOc" coveralls
+            coverage run -m pytest test.py
+            coverage report
+            coveralls --repo-token=RE6TLjhyIVaXbapK0OAMllp8BwHOJJPOc
+            #coverage run --source=my_package -m pytest tests.py  
+            #COVERALLS_REPO_TOKEN="RE6TLjhyIVaXbapK0OAMllp8BwHOJJPOc" coveralls
       - run:
           name: Run tests
           command: python -m pytest tests.py && echo "Testing Starting Here"
